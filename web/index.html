@@ -1,52 +1,71 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Turn Java methods into clear natural-language descriptions with CoDesc.">
-  <title>CoDesc | Code intelligence</title>
-  <link rel="stylesheet" href="/web/styles.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Turn Java methods into clear natural-language descriptions with CoDesc.">
+    <title>CoDesc | Code intelligence</title>
+    <link rel="stylesheet" href="/web/styles.css">
 </head>
+
 <body>
-  <div class="app-shell">
-    <header class="topbar">
-      <a class="brand" href="/" aria-label="CoDesc home"><span class="brand-mark">C</span><span>CoDesc</span></a>
-      <nav class="topnav" aria-label="Primary navigation"><a class="active" href="#workspace">Workspace</a><a href="#about">About the model</a></nav>
-      <div class="status"><span class="status-dot"></span><span id="statusText">Preview engine ready</span></div>
-    </header>
+    <div class="app-shell">
+        <header class="topbar">
+            <a class="brand" href="/" aria-label="CoDesc home"><span class="brand-mark">C</span><span>CoDesc</span></a>
+            <nav class="topnav" aria-label="Primary navigation"><a class="active" href="#workspace">Workspace</a><a href="#about">About the model</a></nav>
+            <div class="status"><span class="status-dot"></span><span id="statusText">Preview engine ready</span></div>
+        </header>
 
-    <main id="workspace">
-      <section class="intro reveal">
-        <div>
-          <p class="eyebrow">CODE TO NATURAL LANGUAGE</p>
-          <h1>Make the intent<br><em>impossible to miss.</em></h1>
-          <p class="lede">Paste a Java method and get a crisp, human-readable description. Built on the CoDesc research pipeline.</p>
-        </div>
-        <div class="intro-note"><span class="note-number">01</span><span>Paste<br>Generate<br>Refine</span></div>
-      </section>
+        <main id="workspace">
+            <section class="intro reveal">
+                <div>
+                    <p class="eyebrow">CODE TO NATURAL LANGUAGE</p>
+                    <h1>Make the intent<br><em>impossible to miss.</em></h1>
+                    <p class="lede">Paste a Java method and get a crisp, human-readable description. Built on the CoDesc research pipeline.</p>
+                </div>
+                <div class="intro-note"><span class="note-number">01</span><span>Paste<br>Generate<br>Refine</span></div>
+            </section>
 
-      <section class="workspace-grid reveal delay-1">
-        <article class="panel editor-panel">
-          <div class="panel-head"><div><span class="panel-kicker">SOURCE</span><h2>Java method</h2></div><button id="clearButton" class="quiet-button" type="button">Clear</button></div>
-          <div class="editor-wrap"><div class="line-numbers" id="lineNumbers">1</div><textarea id="codeInput" spellcheck="false" aria-label="Java source code"></textarea></div>
-          <div class="panel-foot"><span id="charCount">0 characters</span><button id="sampleButton" class="sample-button" type="button">Load sample <span>+</span></button></div>
-        </article>
+            <section class="workspace-grid reveal delay-1">
+                <article class="panel editor-panel">
+                    <div class="panel-head">
+                        <div><span class="panel-kicker">SOURCE</span>
+                            <h2>Java method</h2>
+                        </div><button id="clearButton" class="quiet-button" type="button">Clear</button></div>
+                    <div class="editor-wrap">
+                        <div class="line-numbers" id="lineNumbers">1</div><textarea id="codeInput" spellcheck="false" aria-label="Java source code"></textarea></div>
+                    <div class="panel-foot"><span id="charCount">0 characters</span><button id="sampleButton" class="sample-button" type="button">Load sample <span>+</span></button></div>
+                </article>
 
-        <div class="connector" aria-hidden="true"><span></span><span class="connector-arrow">→</span><span></span></div>
+                <div class="connector" aria-hidden="true"><span></span><span class="connector-arrow">→</span><span></span></div>
 
-        <article class="panel result-panel">
-          <div class="panel-head"><div><span class="panel-kicker">OUTPUT</span><h2>Generated description</h2></div><button id="copyButton" class="quiet-button" type="button" disabled>Copy</button></div>
-          <div id="resultBox" class="result-box empty"><div class="result-placeholder"><span class="placeholder-mark">//</span><p>Your description will appear here.</p><small>Generated summaries stay concise and focused on behavior.</small></div></div>
-          <div class="panel-foot result-foot"><span id="modeLabel">Waiting for input</span><span id="durationLabel"></span></div>
-        </article>
-      </section>
+                <article class="panel result-panel">
+                    <div class="panel-head">
+                        <div><span class="panel-kicker">OUTPUT</span>
+                            <h2>Generated description</h2>
+                        </div><button id="copyButton" class="quiet-button" type="button" disabled>Copy</button></div>
+                    <div id="resultBox" class="result-box empty">
+                        <div class="result-placeholder"><span class="placeholder-mark">//</span>
+                            <p>Your description will appear here.</p><small>Generated summaries stay concise and focused on behavior.</small></div>
+                    </div>
+                    <div class="panel-foot result-foot"><span id="modeLabel">Waiting for input</span><span id="durationLabel"></span></div>
+                </article>
+            </section>
 
-      <div class="action-row reveal delay-2"><button id="generateButton" class="generate-button" type="button"><span id="buttonLabel">Generate description</span><span class="button-arrow">↗</span></button><span class="shortcut">Ctrl <b>↵</b> to generate</span></div>
+            <div class="action-row reveal delay-2"><button id="generateButton" class="generate-button" type="button"><span id="buttonLabel">Generate description</span><span class="button-arrow">↗</span></button><span class="shortcut">Ctrl <b>↵</b> to generate</span></div>
 
-      <section id="about" class="about-strip reveal delay-3"><div><span class="about-index">COdesc / 2021</span><h2>A research model, made approachable.</h2></div><p>CoDesc is a large code-description parallel dataset and neural code summarization system for Java. This interface gives it a focused place to work.</p><div class="about-stats"><strong>4.2m</strong><span>Java examples<br>in the dataset</span></div></section>
-    </main>
-    <footer><span>Open source research interface</span><span>Java / Code summarization</span></footer>
-  </div>
-  <script src="/web/app.js"></script>
+            <section id="about" class="about-strip reveal delay-3">
+                <div><span class="about-index">COdesc / 2021</span>
+                    <h2>A research model, made approachable.</h2>
+                </div>
+                <p>CoDesc is a large code-description parallel dataset and neural code summarization system for Java. This interface gives it a focused place to work.</p>
+                <div class="about-stats"><strong>4.2m</strong><span>Java examples<br>in the dataset</span></div>
+            </section>
+        </main>
+        <footer><span>Open source research interface</span><span>Java / Code summarization</span></footer>
+    </div>
+    <script src="/web/app.js"></script>
 </body>
+
 </html>
