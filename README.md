@@ -113,6 +113,23 @@ Then the following commands will train and test code search networks:
 # Code Summarization
 We used the original implementation of Code Summarization of [NeuralCodeSum](https://github.com/wasiahmad/NeuralCodeSum.git). Please refer to [this guide](https://github.com/csebuetnlp/CoDesc/blob/master/CodeSummarization/README.md) for instructions on how to train the code summarization network.
 
+# Web interface
+
+The repository includes a deployable browser interface for trying code summarization. It runs in preview mode out of the box, before a research dataset or checkpoint has been downloaded:
+
+```bash
+python server.py
+```
+
+Open `http://localhost:8000`. For a production WSGI server, install the optional web requirements and run:
+
+```bash
+pip install -r requirements-web.txt
+gunicorn server:application
+```
+
+To connect a trained model, set `CODESC_MODEL_ADAPTER` to an importable Python module exposing `summarize(code) -> str`. The adapter owns checkpoint loading and preprocessing while the web API remains unchanged. Without the variable, the app uses its deterministic local preview engine and labels results as `Local preview`.
+
 
 # Cite this work
 ```

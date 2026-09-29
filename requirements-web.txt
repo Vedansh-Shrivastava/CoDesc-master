@@ -1,0 +1,3 @@
+# The web interface uses only Python's standard library.
+# Optional production servers can run: gunicorn server:application
+gunicorn>=21.2
